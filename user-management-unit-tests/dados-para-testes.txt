@@ -1,0 +1,21 @@
+// UserService.create(UserCreateDTO data)
+// Passam pelas validacoes de campos, tamanho do nome, formato do e-mail e tamanho da senha:
+UserCreateDTO createValido1 = new UserCreateDTO("Maria Silva", "maria.silva@example.com", "senha123");
+UserCreateDTO createValido2 = new UserCreateDTO("Joao", "joao@exemplo.com", "abc123");
+
+// Nao passam pelas validacoes:
+UserCreateDTO createInvalido1 = new UserCreateDTO("Ana", "ana@example.com", "senha123");
+// Nome com menos de 4 caracteres.
+UserCreateDTO createInvalido2 = new UserCreateDTO("Carlos", "carlos-email-invalido", "123");
+// E-mail fora do formato esperado e senha com menos de 6 caracteres.
+
+
+// UserService.login(UserLoginDTO data)
+// Passam pela validacao de campos nao nulos e nao vazios.
+// Isso nao garante que exista uma conta ou que a senha esteja correta.
+UserLoginDTO loginValido1 = new UserLoginDTO("maria.silva@example.com", "senha123");
+UserLoginDTO loginValido2 = new UserLoginDTO("joao@exemplo.com", "abc123");
+
+// Nao passam pela validacao de campos nao nulos e nao vazios:
+UserLoginDTO loginInvalido1 = new UserLoginDTO(null, "senha123");
+UserLoginDTO loginInvalido2 = new UserLoginDTO("   ", "senha123");
